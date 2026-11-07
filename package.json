@@ -1,0 +1,21 @@
+{
+  "name": "pproll-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node ../node_modules/typescript/lib/tsc.js -p scripts/tsconfig.json --noEmit",
+    "open-vault": "node --experimental-strip-types scripts/open-vault.ts",
+    "deposit": "node --experimental-strip-types scripts/deposit.ts",
+    "join": "node --experimental-strip-types scripts/join.ts",
+    "withdraw": "node --experimental-strip-types scripts/withdraw.ts",
+    "open-payroll": "node --experimental-strip-types scripts/open-payroll.ts",
+    "approve-payroll": "node --experimental-strip-types scripts/approve-payroll.ts",
+    "initiate": "node --experimental-strip-types scripts/initiate.ts",
+    "pay": "node --experimental-strip-types scripts/pay.ts",
+    "stop-payroll": "node --experimental-strip-types scripts/stop-payroll.ts",
+    "reclaim": "node --experimental-strip-types scripts/reclaim.ts"
+  },
+  "dependencies": {
+    "@solana/web3.js": "1.98.4"
+  }
+}
