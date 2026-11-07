@@ -1,0 +1,46 @@
+[package]
+name = "pproll"
+version = "0.1.0"
+edition = "2021"
+description = "Private payroll. One employer, one employee, one cadence. Separate from the escrow swap."
+license = "Apache-2.0"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+default = []
+# spr-program 0.8's CPI uses pinocchio 0.11. The entrypoint uses that same major.
+bpf-entrypoint = ["dep:pinocchio", "dep:spr-program", "dep:spr-interface", "spr-program/cpi", "spr-program/verifier"]
+# Host build of the fund and claim circuits. `zolana build-zk-program` emits the verifying keys.
+circuits = [
+    "dep:spr-program",
+    "dep:spr-transaction",
+    "dep:spr-keypair",
+    "dep:spr-macros",
+    "spr-program/circuit",
+    "spr-transaction/circuit",
+    "spr-keypair/circuit",
+]
+# Names the CLI requires. `r1cs-export` turns the circuits into equations.
+# `insecure-test-setup` is empty on purpose: `--test` keys must not be the default.
+r1cs-export = ["circuits", "spr-program/r1cs-export"]
+wasm = ["circuits", "spr-program/wasm", "dep:getrandom"]
+insecure-test-setup = []
+
+[dependencies]
+pinocchio = { version = "0.11", default-features = false, features = ["alloc"], optional = true }
+# Pinned to the revision documented at sdk-libs/program in helius-labs/zolana.
+spr-program = { version = "=0.8.0", default-features = false, optional = true }
+spr-interface = { version = "=0.8.0", default-features = false, optional = true }
+spr-transaction = { version = "=0.8.0", default-features = false, optional = true }
+# Already in the spr-program graph. A change output is allowed only when its
+# shielded address is instantiated, and that type lives here.
+spr-keypair = { version = "=0.8.0", default-features = false, optional = true }
+spr-macros = { version = "=0.8.0", optional = true }
+# Already in the wasm graph. wasm32-unknown-unknown refuses getrandom 0.4
+# unless this feature is on. Enabled only for the wasm client build.
+getrandom = { version = "0.4", default-features = false, features = ["wasm_js"], optional = true }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
