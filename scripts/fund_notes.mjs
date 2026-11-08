@@ -6,7 +6,7 @@
 import { chmodSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { AccountRole, address, getBase58Decoder } from "../../pescrow/sdk/node_modules/@solana/kit/dist/index.node.mjs";
+import { AccountRole, address, getBase58Decoder } from "../node_modules/@solana/kit/dist/index.node.mjs";
 import {
   LocalKeys,
   ShieldedAddress,
@@ -15,16 +15,16 @@ import {
   Wallet,
   createSprClient,
   syncWallet,
-} from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/index.js";
-import { SignedTeePolicy } from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/client/index.js";
-import { encodeTransactInstructionData } from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/interface/index.js";
-import { randomBlinding } from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/keypair/index.js";
+} from "../node_modules/@heliuslabs/spr/dist/index.js";
+import { SignedTeePolicy } from "../node_modules/@heliuslabs/spr/dist/client/index.js";
+import { encodeTransactInstructionData } from "../node_modules/@heliuslabs/spr/dist/interface/index.js";
+import { randomBlinding } from "../node_modules/@heliuslabs/spr/dist/keypair/index.js";
 import {
   ProgramOwner,
   bindProgramTransaction,
   toProgramWalletUtxo,
   transactCpiAccounts,
-} from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/program/index.js";
+} from "../node_modules/@heliuslabs/spr/dist/program/index.js";
 import {
   AddressLookupTableProgram,
   ComputeBudgetProgram,
@@ -36,7 +36,7 @@ import {
   TransactionMessage,
   VersionedTransaction,
 } from "@solana/web3.js";
-import { ViewingKey } from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/keypair/index.js";
+import { ViewingKey } from "../node_modules/@heliuslabs/spr/dist/keypair/index.js";
 import init, { FundProver, fundTransaction } from "../target/zk/pproll/wasm/node.mjs";
 import { CLOCK, PERIOD_LEN, connection, loadKeypair, loadStream } from "./chain.mjs";
 

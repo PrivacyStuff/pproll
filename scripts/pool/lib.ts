@@ -7,8 +7,8 @@ import { homedir } from "node:os";
 import { join as pathJoin } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomBytes } from "node:crypto";
-import type { Address } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/interface/types.js";
-import type { Bytes32 } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/keypair/bytes.js";
+import type { Address } from "../../node_modules/@heliuslabs/spr/dist/interface/types.js";
+import type { Bytes32 } from "../../node_modules/@heliuslabs/spr/dist/keypair/bytes.js";
 import {
   LocalKeys,
   ShieldedAddress,
@@ -17,22 +17,22 @@ import {
   Wallet,
   createSprClient,
   syncWallet,
-} from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/index.js";
-import { SignedTeePolicy } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/client/index.js";
-import { encodeTransactInstructionData } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/interface/index.js";
-import { initializePoseidon, poseidon } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/hasher/index.js";
-import { randomBlinding } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/keypair/index.js";
+} from "../../node_modules/@heliuslabs/spr/dist/index.js";
+import { SignedTeePolicy } from "../../node_modules/@heliuslabs/spr/dist/client/index.js";
+import { encodeTransactInstructionData } from "../../node_modules/@heliuslabs/spr/dist/interface/index.js";
+import { initializePoseidon, poseidon } from "../../node_modules/@heliuslabs/spr/dist/hasher/index.js";
+import { randomBlinding } from "../../node_modules/@heliuslabs/spr/dist/keypair/index.js";
 import {
   ProgramOwner,
   bindProgramTransaction,
   toProgramWalletUtxo,
   transactCpiAccounts,
-} from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/program/index.js";
-import { ShieldedPda } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/program/shielded-pda.js";
-import { ViewingKey } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/keypair/index.js";
-import type { ProgramTransaction, ProgramTransactionKeys } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/program/program-transaction.js";
-import type { WalletUtxo } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/transaction/wallet/state.js";
-import type { TransactInstructionData } from "../../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/interface/types.js";
+} from "../../node_modules/@heliuslabs/spr/dist/program/index.js";
+import { ShieldedPda } from "../../node_modules/@heliuslabs/spr/dist/program/shielded-pda.js";
+import { ViewingKey } from "../../node_modules/@heliuslabs/spr/dist/keypair/index.js";
+import type { ProgramTransaction, ProgramTransactionKeys } from "../../node_modules/@heliuslabs/spr/dist/program/program-transaction.js";
+import type { WalletUtxo } from "../../node_modules/@heliuslabs/spr/dist/transaction/wallet/state.js";
+import type { TransactInstructionData } from "../../node_modules/@heliuslabs/spr/dist/interface/types.js";
 import {
   AddressLookupTableProgram,
   ComputeBudgetProgram,

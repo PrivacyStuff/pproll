@@ -12,9 +12,9 @@ import {
   SigningKey,
   buildDepositTransaction,
   createSprClient,
-} from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/index.js";
-import type { Bytes32 } from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/keypair/bytes.js";
-import type { Address, Signature } from "../../pescrow/sdk/node_modules/@heliuslabs/spr/dist/interface/types.js";
+} from "../node_modules/@heliuslabs/spr/dist/index.js";
+import type { Bytes32 } from "../node_modules/@heliuslabs/spr/dist/keypair/bytes.js";
+import type { Address, Signature } from "../node_modules/@heliuslabs/spr/dist/interface/types.js";
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";

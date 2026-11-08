@@ -3,4 +3,4 @@ export {
   signTransactionWithSigners,
   sendTransactionWithoutConfirmingFactory,
   getSignatureFromTransaction,
-} from "../../pescrow/sdk/node_modules/@solana/kit/dist/index.node.mjs";
+} from "../node_modules/@solana/kit/dist/index.node.mjs";

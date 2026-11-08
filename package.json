@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node ../node_modules/typescript/lib/tsc.js -p scripts/tsconfig.json --noEmit",
+    "check": "tsc -p scripts/tsconfig.json --noEmit",
     "open-vault": "node --experimental-strip-types scripts/open-vault.ts",
     "deposit": "node --experimental-strip-types scripts/deposit.ts",
     "join": "node --experimental-strip-types scripts/join.ts",
@@ -16,6 +16,12 @@
     "reclaim": "node --experimental-strip-types scripts/reclaim.ts"
   },
   "dependencies": {
+    "@heliuslabs/spr": "0.9.0-alpha",
+    "@solana/kit": "^8.3.0",
     "@solana/web3.js": "1.98.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5"
   }
 }
